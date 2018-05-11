@@ -1,5 +1,9 @@
-MIT License
 /*
+ * main.c
+ *
+ *  Created on: 09.05.2018
+ *      Author: Arkadiusz Wadowski
+ *		Email: wadowski.arkadiusz@gmail.com
  *
  *  Copyright (c) 2018, Arkadiusz Wadowski
  *  All rights reserved.
@@ -26,4 +30,42 @@ MIT License
  *  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
- */v
+ */
+
+#include "linked_list.h"
+#include "stddef.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "stdbool.h"
+
+
+
+int main()
+{
+    bool s = true;
+    bool f = true;
+    bool v = s+f;
+    static int a = 21;//21;
+    static int b = 69;
+    static int c = 65;
+    static int* out = NULL;
+    linked_list_t* list = linked_list_new();
+    linked_list_add_at_first(list, (void*)&a);
+    linked_list_add_at_end(list, (void*)&b);
+    linked_list_insert_at_index(list, (void*)&c, 1);
+    linked_list_get_first(list, (void*)&out);
+    printf("Out: %i\r\n", *out);
+    linked_list_get_last(list, (void*)&out);
+    printf("Out: %i\r\n", *out);
+    linked_list_get_from_index(list, 0, (void*)&out);
+    printf("Out: %i\r\n", *out);
+    linked_list_get_from_index(list, 1, (void*)&out);
+    printf("Out: %i\r\n", *out);
+    linked_list_get_from_index(list, 2, (void*)&out);
+    printf("Out: %i\r\n", *out);
+    unsigned int d = linked_list_size(list);
+    printf("Size: %i\r\n", d);
+    linked_list_delete(list);
+
+    return 0;
+}

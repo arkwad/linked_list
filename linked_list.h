@@ -1,5 +1,9 @@
-MIT License
 /*
+ *  linked_list.h
+ *
+ *  Created on: 09.05.2018
+ *      Author: Arkadiusz Wadowski
+ *		Email: wadowski.arkadiusz@gmail.com
  *
  *  Copyright (c) 2018, Arkadiusz Wadowski
  *  All rights reserved.
@@ -26,4 +30,29 @@ MIT License
  *  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
- */v
+ */
+
+#ifndef LINKED_LIST_H_
+#define LINKED_LIST_H_
+#ifdef __cplusplus
+extern "C" {
+#endif
+typedef struct linked_list linked_list_t;
+
+linked_list_t* linked_list_new(void);
+int linked_list_delete(linked_list_t* instance);
+int linked_list_add_at_first(linked_list_t* instance, void* data);
+int linked_list_add_at_end(linked_list_t* instance, void* data);
+int linked_list_insert_at_index(linked_list_t* instance, void* data, unsigned int idx);
+int linked_list_remove_first(linked_list_t* instance);
+int linked_list_remove_last(linked_list_t* instance);
+int linked_list_remove_from_index(linked_list_t* instance, unsigned int idx);
+int linked_list_get_first(linked_list_t* instance, void** data_out);
+int linked_list_get_last(linked_list_t* instance, void** data_out);
+int linked_list_get_from_index(linked_list_t* instance, unsigned int idx, void** data_out);
+unsigned int linked_list_size(linked_list_t* instance);
+
+#ifdef __cplusplus
+}
+#endif
+#endif /* LINKED_LIST_H_ */
